@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 type Props = {
 }
@@ -10,9 +9,9 @@ export default class MineScene extends React.Component {
     render() {
         return (
             <View>
-                 <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-   style={{justifyContent:'center', alignItems: 'center', width: 400, height: 400}} />
-                 <Text>Mine</Text>
+                <Image source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+                    style={{ justifyContent: 'center', alignItems: 'center', width: 400, height: 400 }} />
+                <Text>Mine</Text>
             </View>
         )
     }

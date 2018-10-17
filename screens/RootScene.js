@@ -1,14 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import TabBarItem from '../widget/TabBarItem'
-import HomeScene from '../scene/Home/HomeScene'
-import NearbyScene from '../scene/Nearby/NearbyScene'
-import OrderScene from '../scene/Order/OrderScene'
-import MineScene from '../scene/Mine/MineScene'
-import WebScene from '../scene/Web/WebScene'
-import color from '../widget/color'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import HomeScene from '../scene/Home/HomeScene';
+import MineScene from '../scene/Mine/MineScene';
+import NearbyScene from '../scene/Nearby/NearbyScene';
+import OrderScene from '../scene/Order/OrderScene';
+import WebScene from '../scene/Web/WebScene';
+import color from '../widget/color';
+import TabBarItem from '../widget/TabBarItem';
 
 type Props = {
 }

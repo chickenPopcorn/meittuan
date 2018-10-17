@@ -1,16 +1,28 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as api from "../../api";
+import screen from '../../common/screen';
 import color from '../../widget/color';
 import NavigationItem from '../../widget/NavigationItem';
-import * as api from "../../api";
+import SpacingView from '../../widget/SpacingView';
+import HomeGridView from './HomeGridView';
 import HomeMenuView from './HomeMenuView';
-import screen from '../../common/screen';
 
 type Props = {
+    discount: Object,
 }
+
 type State = {
+
 }
 export default class HomeScene extends React.Component {
+
+    constructor (props: Object) {
+        super(props)
+        this.state = {
+            discounts: [],
+        }
+    }
 
     static navigationOptions = () => ({
         headerStyle: { backgroundColor: color.primary },
@@ -33,16 +45,35 @@ export default class HomeScene extends React.Component {
         ),
 
     });
-    
+
+    componentDidMount() {
+        this.requestData();
+    }
+
+    requestData = async () => {
+        try {
+            // let response = await fetch(api.default.discount)
+            // let json = await response.json()
+            let json = api.default.discount
+            this.setState({ discounts: json })
+        } catch (error) {
+            alert(error);
+        }
+    }
+
 
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <HomeMenuView
                     menuInfos={api.menuInfo}
                     onMenuSelected={(index) => {
                         alert(index);
-                     }} />
+                    }} />
+
+                <SpacingView />
+                <HomeGridView infos={this.state.discounts} />
+                <SpacingView />
             </View>
         );
     }
@@ -61,6 +92,12 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         margin: 5,
+    },
+    gridContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderLeftWidth: StyleSheet.hairlineWidth,
+        borderColor: color.border,
     }
-
 });
